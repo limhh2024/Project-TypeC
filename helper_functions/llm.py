@@ -4,6 +4,9 @@ from dotenv import load_dotenv
 from openai import OpenAI
 import tiktoken
 from langchain.llms import OpenAI
+#from langchain_openai import OpenAIEmbeddings
+#from langchain_community.chat_models import ChatOpenAI
+#from langchain_community.llms import openai
 
 if load_dotenv('.env'):
    # for local development
@@ -15,8 +18,9 @@ else:
 #client = OpenAI(api_key=os.getenv('OPENAI_API_KEY'))
 #print("api key is ", api_key)
 client = OpenAI(api_key=OPENAI_KEY)
-#define the langauge model
-llmLangChain = OpenAI(openai_api_key=OPENAI_KEY)
+
+#define the langauge model and pass this API key to customer_query_resale.py
+llmLangChain = OpenAI(api_key=OPENAI_KEY)
 
 def get_embedding(input, model='text-embedding-3-small'):
     response = client.embeddings.create(
