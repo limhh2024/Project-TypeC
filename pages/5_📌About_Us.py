@@ -7,11 +7,11 @@ st.set_page_config(
 )
 # endregion <--------- Streamlit App Configuration --------->
 
-st.title("About this App")
+st.title("Type C Project")
 
-st.write("This is a Streamlit App that demonstrates how to use the OpenAI API to generate text completions.")
+st.write("This is a Streamlit App that use the OpenAI API to generate text completions.")
 
-with st.expander("How to use this App"):
-    st.write("1. Enter your prompt in the text area.")
-    st.write("2. Click the 'Submit' button.")
-    st.write("3. The app will generate a text completion based on your prompt.")
+with st.expander("2 Use cases"):
+    st.write("Use Case 1 - Query on HDB Resale price by location, floor area etc")
+    st.write("Use Case 2 - Check how to apply resale flat using CPF.")
+    st.write("The app will generate a text completion after users enter their question.")
