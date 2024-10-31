@@ -1,9 +1,10 @@
-# Set up and run this Streamlit App
 import streamlit as st
-import pandas as pd
-# from helper_functions import llm
-from logics.customer_query_resale import process_user_message
+from logics.customer_plot_graph import process_user_message
 from helper_functions.utility import check_password
+import pandas as pd
+
+import matplotlib.pyplot as plt
+from matplotlib import pyplot as plt
 
 # region <--------- Streamlit App Configuration --------->
 st.set_page_config(
@@ -11,17 +12,16 @@ st.set_page_config(
     page_title="Project Type C"
 )
 # endregion <--------- Streamlit App Configuration --------->
-
 #Title of the page
-st.title("HDB resale flat price query")
+st.title("Plot Graph - Resale Flat")
 st.markdown("""<style>.small-font {font-size:15px;}
-    </style><div class='small-font'>Sample query 1 - What is the largest area flat in pasir ris
+    </style><div class='small-font'>Sample query 1 - Create a bar chart on the top 5 town by resale prices
 </div>""", unsafe_allow_html=True)
 st.markdown("""<style>.small-font {font-size:15px;}
-    </style><div class='small-font'>Sample query 2 - Which flat type has the highest resale price in simei st 1
+    </style><div class='small-font'>Sample query 2 - Do a table with 5 towns have the highest remaining lease and their resale price columns
 </div>""", unsafe_allow_html=True)
 st.markdown("""<style>.small-font {font-size:15px;}
-    </style><div class='small-font'>Sample query 3 - How much is the cheapest Executive flat type in Geylang
+    </style><div class='small-font'>Sample query 2 - Do a bar chart with top 3 towns have the highest remaining lease
 </div>""", unsafe_allow_html=True)
 st.markdown("\n\n")
 
@@ -35,18 +35,18 @@ form.subheader("Prompt")
 user_prompt = form.text_area("Enter your prompt here", height=200)
 
 if form.form_submit_button("Submit"):
-    
+    # User has clicked the submit button
     st.toast(f"User Input Submitted - {user_prompt}")
-
     st.divider()
-
-    #response, result = process_user_message(user_prompt)
+    
+    #st.write("Going into the graph program..")
     response = process_user_message(user_prompt)
-    #st.write(response)
-
     st.divider()
+    #write_response(response)
 
-    st.write(response)
-    #print(result)
-    #df = pd.DataFrame(course_details)
-    #df 
+    fig = plt.gcf()
+    if fig.get_axes():
+        st.pyplot(fig, use_container_width=False)
+    else:
+        st.write(response)
+

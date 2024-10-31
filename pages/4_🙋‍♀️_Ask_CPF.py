@@ -9,8 +9,15 @@ st.set_page_config(
     page_title="Project Type C"
 )
 # endregion <--------- Streamlit App Configuration --------->
-
+#Title of the page
 st.title("Ask CPF query")
+st.markdown("""<style>.small-font {font-size:15px;}
+    </style><div class='small-font'>Sample query 1 - How do we apply resale flat
+</div>""", unsafe_allow_html=True)
+st.markdown("""<style>.small-font {font-size:15px;}
+    </style><div class='small-font'>Sample query 2 - What are the steps to apply resale flat
+</div>""", unsafe_allow_html=True)
+st.markdown("\n\n")
 
 # Check if the password is correct.  
 if not check_password():  
