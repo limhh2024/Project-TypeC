@@ -55,7 +55,8 @@ def query_agent(agent, query):
     #print("agent is .. ", agent)
   
     # Run the prompt through the agent.
-    response = agent.run(query)
+    #response = agent.run(query)
+    response = agent.invoke(query)
     print("response inside query_agent function is ", response)
     # Convert the response to a string.
     #return response.__str__()
